@@ -6,6 +6,24 @@
   <packaging>jar</packaging>
   
   <name>Collatz</name>
+  <description>Collatz Computer</description>
+  <url>https://www.github.com/ttno1/collatz</url>
+  <inceptionYear>2021</inceptionYear>
+  <developers>
+    <developer>
+      <id>TTNO1</id>
+      <name>TTNO1</name>
+      <url>https://www.github.com/ttno1/</url>
+      <roles>
+        <role>Creator</role>
+        <role>Developer</role>
+      </roles>
+      <timezone>America/New_York</timezone>
+      <properties>
+        <discord>TTNO1#1752</discord>
+      </properties>
+    </developer>
+  </developers>
   
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -13,7 +31,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
-  <!--<build>
+  <build>
   <plugins>
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
@@ -22,13 +40,15 @@
       <configuration>
         <archive>
           <manifest>
-            <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
             <mainClass>me.ttno1.collatz.Collatz</mainClass>
           </manifest>
+          <manifestEntries>
+            <Built-By>TTNO1</Built-By>
+            <url>${project.url}</url>
+          </manifestEntries>
         </archive>
       </configuration>
     </plugin>
   </plugins>
-  </build>-->
+  </build>
 </project>

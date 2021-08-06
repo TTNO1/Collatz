@@ -6,7 +6,7 @@ import java.io.IOException;
 class Collatz {
     
     public static void main(String[] args) {
-        
+    	
         if(args.length == 0 || args[0] == null || args[0] == "") {
         	
         	throw new IllegalArgumentException("Please provide a directory to save log files as first command line argument.");

@@ -122,7 +122,7 @@ public class StatsLogger implements Runnable {
 
     		}
     		
-    		
+    		map.clear();
     		
     	}
         
@@ -139,6 +139,8 @@ public class StatsLogger implements Runnable {
         		stepsWriter.write("(" + entry.getKey() + "," + entry.getValue() + ")" + System.lineSeparator());
 
         	}
+        	
+        	map.clear();
 
     	}
         
@@ -155,6 +157,8 @@ public class StatsLogger implements Runnable {
         		resultsWriter.write("(" + entry.getKey() + "," + entry.getValue() + ")" + System.lineSeparator());
 
         	}
+        	
+        	map.clear();
 
         }
         
