@@ -84,7 +84,7 @@ public class StdComputer implements Computer {
         long num = input;
         
         while(num != 1) {
-            
+        	
             if(num % 2 != 0) {
                 //Odd
                 num = num * 3 + 1;
@@ -94,6 +94,14 @@ public class StdComputer implements Computer {
                 num = num / 2;
             
             }
+            
+            PathCoordinate computedCoord = statsHolder.getFirstComputed(num);
+            
+            if(computedCoord != null) {
+        		
+        		statsHolder.setReference(input, computedCoord);
+        		
+        	}
             
             statsHolder.addStepToPath(input, num);
             

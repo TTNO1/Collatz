@@ -7,6 +7,12 @@ public interface StatsHolder {
 
 	public Long[] getSteps(long startNum);
 	
+	public PathCoordinate getReference(long startNum);
+	
+	public void setReference(long startNum, PathCoordinate reference);
+	
+	public PathCoordinate getFirstComputed(long num);
+	
 	public Map<Long, Long[]> getPathStepsMap();
 	
 	public Long[] getStartingNums();

@@ -11,11 +11,13 @@ public class HashMapStatsHolder implements StatsHolder {
 
 	private Map<Long, List<Long>> pathsMap;
 	
+	private Map<Long, PathCoordinate> referenceMap;
+	
 	private Object cacheFullObj;
 	
 	private long cacheSize;
 	
-	public HashMapStatsHolder(long maxNum, long cacheSize) {
+	public HashMapStatsHolder(long cacheSize) {
 		
 		cacheFullObj = new Object();
 		
@@ -23,11 +25,7 @@ public class HashMapStatsHolder implements StatsHolder {
 		
 		pathsMap = new HashMap<Long, List<Long>>();
 		
-		for(long i = 0; i <= maxNum; i++) {
-			
-			initializePath(i);
-			
-		}
+		referenceMap = new HashMap<Long, PathCoordinate>();
 		
 	}
 	
@@ -43,11 +41,7 @@ public class HashMapStatsHolder implements StatsHolder {
 	
 	private synchronized void initializePath(long startNum) {
 		
-		if(!pathsMap.containsKey(startNum)) {
-			
-			pathsMap.put(startNum, new ArrayList<Long>());
-			
-		}
+		pathsMap.putIfAbsent(startNum, new ArrayList<Long>());
 		
 	}
 	
@@ -55,6 +49,39 @@ public class HashMapStatsHolder implements StatsHolder {
 	public synchronized Long[] getSteps(long startNum) {
 		
 		return pathsMap.get(startNum).toArray(new Long[0]);
+		
+	}
+	
+	@Override
+	public PathCoordinate getReference(long startNum) {
+		
+		return referenceMap.get(startNum);
+		
+	}
+	
+	@Override
+	public void setReference(long startNum, PathCoordinate reference) {
+		
+		referenceMap.put(startNum, reference);
+		
+	}
+	
+	@Override
+	public PathCoordinate getFirstComputed(long num) {
+		
+		for(Entry<Long, List<Long>> entry : pathsMap.entrySet()) {
+			
+			int index = entry.getValue().indexOf(num);
+			
+			if(index > -1) {
+				
+				return new PathCoordinate(entry.getKey(), index);
+				
+			}
+			
+		}
+		
+		return null;
 		
 	}
 	

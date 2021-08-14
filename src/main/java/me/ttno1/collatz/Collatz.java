@@ -66,7 +66,7 @@ class Collatz {
         	
         }
         
-        StatsHolder statsHolder = new HashMapStatsHolder((long) Math.pow(2, 15), 15000);//TODO Cahce Size
+        StatsHolder statsHolder = new HashMapStatsHolder(15000);//TODO Cahce Size
         
         StatsSaver statsSaver;
     	
