@@ -28,16 +28,24 @@ class Collatz {
     	
     	options.addOption(Option.builder("pi").longOpt("progressInterval").desc("The frequency (in milliseconds) with which progress is logged.").hasArg().argName("interval").type(long.class).build());
     	
+    	CommandLine cmdln;
+    	
     	try {
     		
-			CommandLine cmdln = new DefaultParser().parse(options, args, false);
+			cmdln = new DefaultParser().parse(options, args, false);
 			
 		} catch (ParseException e1) {
 			
-			new HelpFormatter().printHelp("java -jar <Path-To-Jar>", options, true);
+			new HelpFormatter().printHelp("java [-jar <Path-To-Jar>] [<Path To Program>]", options, true);
+			
+			return;
 			
 		}
-    	
+		
+		System.out.println(cmdln.getOptionValue('f'));
+
+		return;
+    	/*
         if(args.length == 0 || args[0] == null || args[0] == "") {
         	
         	throw new IllegalArgumentException("Please provide a directory to save log files as first command line argument.");
@@ -133,7 +141,7 @@ class Collatz {
 		} catch (InterruptedException e) {
 			
 		}
-        
+        */
     }
     
 }
