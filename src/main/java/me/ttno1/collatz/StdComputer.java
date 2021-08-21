@@ -101,6 +101,8 @@ public class StdComputer implements Computer {
         		
         		statsHolder.setReference(input, computedCoord);
         		
+        		break;
+        		
         	}
             
             statsHolder.addStepToPath(input, num);
